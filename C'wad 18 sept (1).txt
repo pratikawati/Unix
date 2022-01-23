@@ -1,0 +1,603 @@
+ UNIX - It is an operating system. Unix does not have in GUI, so we make use of CLI(
+command Line Interface) to perfom actions.
+
+ In IT industry it is expected to have atleast basic understanding of UNIX OS irrespective 
+of the job profile.
+
+Why UNIX? Advantages:
+1) Allows multiuser login at the same time
+2) Allows multitasking as well
+3) Reduced time to perform operations
+4) Data stored on UNIX machines is highly secure
+5) Do not have performance issues and require less maintainence
+
+Where do we use UNIX OS in our projects/organizantions?
+1) To Access files/documents stored on sever machine and server will be having 
+UNIX as the operating system.
+2) To access/analyze the log files
+
+20 team
+10 dev --> design + dev
+5 testers --> test cases, test scenarios, defect reports
+1 scrum --> sprint planning
+1 Product owner --> requirement gathering
+1 Dtl --> Dev Plan
+1 TTL --> Test plan
+1 DBA --> Database related items
+
+Server machine --> Centralized machine
+
+LINUX, Fedora, Ubantu, Redhat --> Subsets of UNIX --> GUI + CLI
+
+Folders --> directories
+Files --> files
+
+Window where we write and execute commands --> Terminal window
+
+To establish connection between windows 10 and UNIX OS we make use of -->
+Putty Configuration
+
+=============================================================================
+To create a virtual UNIX OS:
+
+https://cocalc.com/app
+
+==========================================================================
+~$ 
+
+$ --> represents a new command line is open for execution
+~ --> represents the user is currently on default location and the default 
+location is home directory --> tilde operator
+
+windows10 --> desktop
+UNIX --> The default location is Home directory
+
+commands:
+ls --> Listing of files and directories in current working directory.
+
+Names having .extension are all files and Names whcih do not have any extension
+are all directories(folders)
+
+All UNIX commands are case-sensitive.
+~$ Ls
+bash: Ls: command not found
+~$ LS
+bash: LS: command not found
+~$ lS
+bash: lS: command not found
+
+ls -l --> Long listing of files and directories in current working directory
+
+drwxr-xr-x  6 user user        6 Aug 21 04:19  c --> Directory
+-r-xr--rwx  1 user user      274 Aug 19 14:24  catfile.txt --> file
+
+drwxr-xr-x  6 user user        6 Aug 21 04:19  
+-r-xr--rwx  1 user user      274 Aug 19 14:24 
+
+d --> directory
+- --> file 
+
+drwxr-xr-x  6 user user        6 Aug 21 04:19  c
+
+Directory C is created by SHravani --> sxp0123
+Directory C is updated by A --> axb0987
+
+drwxr-xr-x  6 sxp0123 axb0987        6 Aug 21 04:19  c
+
+rwxrwxrwx --> Ideal situation
+rwxr-xr-x 
+
+r --> read --> View
+w --> write --> modify
+x --> execute --> copy, paste, delete
+
+rwx             r-x               r-x
+User/owner      group            others
+
+Directory c is created by Shravani --> User/owner
+Directory c is shared with c'wad 18 sept --> 100 --> others
+
+Group:
+
+1 school
+1 PC
+100 students
+10 teachers
+
+5 ID --> students --> r-- --> group 1
+5 IDs --> teachers --> rwx --> group 2
+
+DBA 
+
+-|r-x|r--|rwx  
+first rwx --> owner/user
+second rwx --> group
+third rwx --> others
+
+rw-r--r-- --> first rights processor decides
+rwxrwxr-- --> user can change it
+
+ls -a --> to include hidden files and directories in listing
+
+Names starting with '.' are all hidden.
+
+ls -r --> To reverse the order of listing
+
+
+====================================================================
+~
+ls
+ls -l
+===================================================================
+pwd --> present working directory
+
+~$ pwd
+/home/user
+==================================================================
+ 
+cd --> change directory
+
+syntax: cd directoryname
+
+~/Z/C/4$
+
+4 --> Immediate parent --> C --> cd ..
+4 --> default parent --> Home --> cd
+
+defaultcontent --> To move back to main page
+parentframe --> To move back to immediate parent
+
+~/Z/C/4$ cd ..
+~/Z/C$ cd 4
+~/Z/C/4$ cd
+~$ 
+
+~$ cd Z/C/4
+~/Z/C/4$ 
+
+~$ cd A/B/C/D/E/F/G/H
+~/A/B/C/D/E/F/G/H$ cd ..
+~/A/B/C/D/E/F/G$ cd D
+bash: cd: D: No such file or directory
+~/A/B/C/D/E/F/G$ cd ~/A/B/C/D
+~/A/B/C/D$ cd
+~$ 
+
+=====================================================================
+
+mkdir --> make a new directory
+
+syntax: mkdir directoryname
+
+make use of '-v' i.e. verbose to print the process messages on terminal window itself.
+~/2$ mkdir -v B
+mkdir: created directory 'B'
+
+To create child directories, separate the parent and child using '/'.
+
+~$ mkdir -v 2/C
+mkdir: created directory '2/C'
+
+To create parent child together make use of -p to avoid any kind of errors.
+~$ mkdir -pv 3/A
+mkdir: created directory '3'
+mkdir: created directory '3/A'
+
+To create multiple sub-directories at same level, provide the directory names in {} separated by
+','.
+~$ mkdir -pv 3/{B,C,D}
+mkdir: created directory '3/B'
+mkdir: created directory '3/C'
+mkdir: created directory '3/D'
+
+3 --> A B C D
+
+mkdir -pv 3/{B,C,D}
+
+3 --> A B C D
+
+A D --> x y z
+
+mkdir -pv 3/{A,D}/{x,y,z}
+
+2022
+12 months
+30 days
+
+mkdir -pv 2022/{jan,feb,mar,apr,may,jun,jul}/{1,2,3,4,5,6,7,8}
+mkdir -pv 2022/{jan,feb,mar,apr,may,jun,jul}/{1..30} --> to provide in range
+
+2 022
+jan,mar,may,jul,aug,oct,dec --> {1..31}
+feb --> {1..28}
+apr,jun,sept,nov --> {1..30}
+
+mkdir -pv 2022/{jan,mar,may,jul,aug,oct,dec}/{1..31} 2022/feb/{1..28} 2022/{apr,jun,sept,nov}/{1..30}
+
+ mkdir -pv 2022/{{jan,mar,may,jul,aug,oct,dec}/{1..31},{feb{1..28}},{apr,jun,sept,nov}/{1..30}}
+
+10 20 30
+
+mkdir -pv 10 20 30
+
+mkdir -pv 10
+mkdir -pv 20
+mkdir -pv 30
+
+whenever we have space in filename or directoryname always pass the names in '' while writing
+the command to avoid any errors.
+~$ cd new ABC
+bash: cd: too many arguments
+~$ cd 'new ABC'
+~/new ABC$ 
+new ABC
+
+mkdir -pv new ABC
+mkdir -pv 'new ABC'
+==================================================================================
+To clean the terminal window:
+1) ctrl +l --> history will be available
+2) clear --> history will not be available
+=======================================================================
+mkdir
+-v
+-p
+'/'
+{,,,,,}
+cd
+cd ..
+cd
+''
+pwd
+~
+ls -a
+ls -r
+ls
+ls -l
+putty configuration
+ip
+username
+password
+======================================================
+
+rmdir --> to remove directories
+pre-requisite: The directory to be removed must be empty.
+
+syntax: rmdir directoryname
+
+~$ rmdir -v 3
+rmdir: removing directory, '3'
+rmdir: failed to remove '3': Directory not empty
+~$ rmdir -v ABC
+rmdir: removing directory, 'ABC'
+
+3 --> A B C D
+3 --> A D --> X Y Z
+
+rmdir -v 3/{A,D}/X
+
+~$ rmdir -v 3/{A,D}/x
+rmdir: removing directory, '3/A/x'
+rmdir: removing directory, '3/D/x'
+===================================================================
+rm -r --> to remove directories having data and it can remove empty directories as well.
+
+syntax: rm -r directoryname
+
+~$ rm -rv 2
+removed directory '2/A'
+removed directory '2/B'
+removed directory '2/C'
+removed directory '2'
+==============================================================
+pwd, cd, mkdir, rmdir --> These are directory specific commands.
+==============================================================
+
+rm --> to remove files
+
+syntax: rm filename.extension
+
+A.txt
+A.pdf
+A.docx
+A.xlxs
+
+~$ rm -v 1.txt
+removed '1.txt'
+~$ rm -v folder/2.txt
+removed 'folder/2.txt'
+
+rm -i --> To ask for confirmation before file removal
+
+~$ rm -i 2.txt
+rm: remove regular file '2.txt'? Y
+
+Provide Y/N as the input
+ # we can use rm -ri for directories but it will ask for permission before removal of
+each and every child directory.
+
+~$ rm -ri 3
+rm: descend into directory '3'? Y
+rm: remove directory '3/C'? Y
+rm: descend into directory '3/D'? Y
+rm: remove directory '3/D/y'? Y
+rm: remove directory '3/D/z'? 
+
+======================================================
+
+wc --> word count
+
+syntax: wc filename
+
+~$ wc 'text file new.txt'
+  177 | 2455 |16584 |text file new.txt
+No of lines| no of words| no of characters| filename
+======================================================
+
+man --> To view the user manual
+
+syntax: man commandname
+
+Press "q" to move out of user manual.
+
+man wc
+==================================================
+cat --> 1) To view the content of the file
+syntax: cat filename.extension
+2) To view the data of two or more files together
+syntax: cat file1 file2 file3 .......
+3) To concatenate the data of 2 or more files and add it in a new file
+
+syntax: cat file1 file2 >newfilename
+====================================================
+vi --> 1) To update the data of an existing file
+2) To create a new file and add data in it
+
+Steps:
+1) vi filename
+2) press "i" to move inside insert mode
+3) update/modify as required
+4) press "esc" to move out of insert mode
+5) write ":"
+6) write "wq"
+7) press enter to move back to terminal
+======================================================
+touch --> Can create only a new empty file
+
+syntax: touch filename
+======================================================
+cat
+
+head --> To display the first 10 lines of the document
+
+syntax: head filename --> By default it will display first 10 lines of the document
+
+head -n filename --> To display specific number of lines from start of the document
+====================================================
+tail --> To display the last 10 lines of the document
+
+syntax: tail filename --> By default it will display last 10 lines of the document
+
+tail -n filename --> To display specific number of lines from end of the document
+=======================================================
+
+filename:
+Conclusion:
+1)
+2)
+3)
+result:
+1)
+2)
+Additional information:
+1)
+2)
+3)
+4)
+5)
+6)
+
+head -8 pipes.txt|tail -3
+filename:
+Conclusion:
+1)
+2)
+3)
+result:
+1)
+2)
+
+pipes in UNIX: To combine multiple file specific commands to achieve a desired result.
+
+command1|command2|command3|........
+
+In pipes, we need to provide the filename only for the first command.
+==================================================================================
+
+ctrl+f
+
+grep --> global regular expression pattern
+
+syntax: grep "word" filename.extension --> Will display the lines having searched word
+
+grep -n "word" filename --> will display the lines having searched word along with line numbers
+
+grep -v "word" filename --> will display the lines which do not have the searched word
+
+A.txt
+Total no. of lines --> 150
+Word to be searched --> Apple
+No. of lines having searched word --> 30
+No. of lines which do not have the searched word --> 120
+
+grep "Apple" A.txt
+===================================================================================
+
+mv --> 1) To rename files and directories
+~$ mv -v 1.txt 100.txt
+renamed '1.txt' -> '100.txt'
+~$ mv -v X AX
+renamed 'X' -> 'AX'
+ 2)To move files from one location to another(cut+paste)
+
+syntax: mv filename directoryname
+
+mv sourcepath destinationpath
+
+Z --> 100.txt
+
+A/B/C/D
+
+mv Z/100.txt A/B/C/D
+
+Using mv we can not move whole directory from one location to another. We make use of cp for the 
+operation
+=====================================================================================
+cp (Copy+paste) --> 1) To copy the files
+
+cp filename directoryname
+cp sourcepath destinationpath
+
+2) to copy directories
+
+cp -r sourceptha destinationpath
+
+
+rmdir
+rm -r --> To remove directories
+rm --> to remove files
+
+cp --> To copy files
+cp -r --> to copy directories
+=======================================================================================
+chmod --> change mode
+
+-rw-r--r-- 1 user user      51 Jan 19 03:02  B.txt
+
+rw-                  r--               r--
+user(u)             group(g)          others(o)
+
+1) Using assignment operators
+2) Using numeric way
+
+1) Using assignment operators
+
++ --> To add a new access
+- --> To remove an existing access
+= --> To assign access
+
+User(u)
+rw- --> Initial
+rwx --> change
+
+chmod u+x B.txt
+
+rwx|r--|r-- --> Initial
+rw-|rwx|r-- --> change
+
+chmod u-x,g+wx B.txt
+
+rw-rwxr--
+
+g 
+rwx --> Initial
+r-- -->Now
+
+chmod g-wx B.txt
+chmod g=r B.txt
+
+chmod ugo=rwx B.txt
+
+~$ ls -l B.txt
+-rw-r--r-- 1 user user 51 Jan 19 03:02 B.txt
+~$ chmod u+x B.txt
+~$ ls -l B.txt
+-rwxr--r-- 1 user user 51 Jan 19 03:02 B.txt
+~$ chmod u-x,g+wx B.txt
+~$ ls -l B.txt
+-rw-rwxr-- 1 user user 51 Jan 19 03:02 B.txt
+~$ chmod g=r B.txt
+~$ ls -l B.txt
+-rw-r--r-- 1 user user 51 Jan 19 03:02 B.txt
+~$ chmod ugo=rwx B.txt
+~$ ls -l B.txt
+-rwxrwxrwx 1 user user 51 Jan 19 03:02 B.txt
+
+o
+rwx
+rw-
+
+chmod o-x B.txt
+
+2) Numeric way:
+
+-rwxrwxrwx 1 user user 51 Jan 19 03:02 B.txt
+
+rwxrwxrwx --> Initial
+rw-r-xr-- --> Change
+110101100 --> Binary number
+
+421 --> Number used to do binary to decimal conversion
+110 = 4*1 + 2*1 + 1*0 = 6 --> User
+101 = 4 + 0 + 1 = 5 --> group
+100 = 4 + 0 + 0 = 4 --> others
+
+chmod 654 B.txt
+
+chmod 777 B.txt
+
+~$ chmod 654 B.txt
+~$ ls -l B.txt
+-rw-r-xr-- 1 user user 51 Jan 19 03:02 B.txt
+~$ chmod 777 B.txt
+~$ ls -l B.txt
+-rwxrwxrwx 1 user user 51 Jan 19 03:02 B.txt
+
+~$ chmod -v o-x B.txt
+mode of 'B.txt' changed from 0777 (rwxrwxrwx) to 0776 (rwxrwxrw-)
+===========================================================================
+
+logs --> 
+
+Date time process
+
+DEV --> SIT --> UAT --> PROD
+
+success.log --> Successful steps
+fail.log --> failed steps
+error.log --> error steps
+daily.log --> daily logs
+dpkg.log --> super set
+monit.log --> login logout related logs
+
+cd /var/log
+========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
